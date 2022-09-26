@@ -61,3 +61,5 @@ module.exports = async function ({getNamedAccounts, deployments}) {
   //log(`npx hardhat run scripts/enterLottery.js --network ${networkName}`);
   log('----------------------------------------------------');
 };
+
+module.exports.tags = ['all', 'lottery'];
