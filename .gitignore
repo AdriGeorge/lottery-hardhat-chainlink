@@ -14,8 +14,6 @@ typechain
 # don't push the environment vars!
 .env
 
-# utils
-utils.txt
 
 # Built application files
 .DS*
