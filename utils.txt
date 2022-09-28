@@ -1,3 +1,5 @@
 chainlik contract 0x38Cb1a695f0e8337337bD23B49F510cf8b26a306
 requestId 2379 
 https://vrf.chain.link/goerli/2379
+
+myContract: 0x2BFA6A5bD0A4105EAC22a1576F7d300957b14B82

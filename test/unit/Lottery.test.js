@@ -1,3 +1,4 @@
+// https://github.com/PatrickAlphaC/hardhat-smartcontract-lottery-fcc/tree/main/test/unit
 const {assert, expect} = require('chai');
 const {getNamedAccounts, deployments, ethers} = require('hardhat');
 const {
@@ -7,7 +8,7 @@ const {
 
 !developmentChains.includes(network.name)
   ? describe.skip
-  : describe('Lottery', async () => {
+  : describe('Lottery', () => {
       let lottery, vrfCoordinatorV2Mock, lotteryEntranceFee, interval, player;
 
       beforeEach(async () => {
@@ -22,7 +23,7 @@ const {
         interval = await lottery.getInterval();
       });
 
-      describe('Constructor', async () => {
+      describe('Constructor', () => {
         it('Inizializes the lottery correctly', async () => {
           const lotteryState = await lottery.getLotteryState();
           assert.equal(lotteryState.toString(), 0);
@@ -33,7 +34,7 @@ const {
         });
       });
 
-      describe('Enter lottery', async () => {
+      describe('Enter lottery', () => {
         it("revert when you don't pay enough", async () => {
           await expect(lottery.enterLottery()).to.be.revertedWith(
             'Lottery__NotEnougETHEntered'
@@ -67,5 +68,24 @@ const {
             lottery.enterLottery({value: lotteryEntranceFee})
           ).to.be.revertedWith('Lottery__NotOpen');
         });
+      });
+
+      describe('checkUpkeep', () => {
+        it("returns false if people haven't sent any ETH", async () => {});
+        it("returns false if raffle isn't open", async () => {});
+        it("returns false if enough time hasn't passed", async () => {});
+        it('returns true if enough time has passed, has players, eth, and is open', async () => {});
+      });
+
+      describe('performUpkeep', () => {
+        it('can only run if checkupkeep is true', async () => {});
+        it('reverts if checkup is false', async () => {});
+        it('updates the raffle state and emits a requestId', async () => {});
+      });
+
+      describe('fulfillRandomWords', () => {
+        beforeEach(async () => {});
+        it('can only be called after performupkeep', async () => {});
+        it('picks a winner, resets, and sends money', async () => {});
       });
     });
